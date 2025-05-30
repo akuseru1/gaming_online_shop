@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>サイバーパンク電卓</title>
+  <style>
+    body {
+      background-color: #000;
+      font-family: 'Orbitron', sans-serif;
+      color: #f00;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      overflow: hidden;
+    }
+
+    .calculator {
+      background: linear-gradient(145deg, #111, #000);
+      border: 2px solid #f00;
+      box-shadow: 0 0 20px #f00, inset 0 0 10px #900;
+      padding: 20px;
+      border-radius: 10px;
+      width: 320px;
+    }
+
+    .display {
+      background: #111;
+      color: #0f0;
+      font-size: 2rem;
+      padding: 15px;
+      text-align: right;
+      border: none;
+      margin-bottom: 20px;
+      box-shadow: inset 0 0 10px #0f0;
+      border-radius: 5px;
+      width: 90%;
+    }
+
+    .buttons {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+    }
+
+    button {
+      padding: 20px;
+      font-size: 1.2rem;
+      background-color: #222;
+      color: #f00;
+      border: 1px solid #f00;
+      border-radius: 8px;
+      box-shadow: 0 0 5px #f00;
+      transition: all 0.2s ease-in-out;
+    }
+
+    button:hover {
+      background-color: #400;
+      box-shadow: 0 0 10px #f00;
+      cursor: pointer;
+    }
+
+    .danger {
+      background-color: #900;
+      box-shadow: 0 0 15px #f00;
+    }
+  </style>
+</head>
+<body>
+
+<div class="calculator">
+  <input type="text" class="display" id="display" disabled>
+  <div class="buttons">
+    <button onclick="append('7')">7</button>
+    <button onclick="append('8')">8</button>
+    <button onclick="append('9')">9</button>
+    <button onclick="append('/')">÷</button>
+    <button onclick="append('4')">4</button>
+    <button onclick="append('5')">5</button>
+    <button onclick="append('6')">6</button>
+    <button onclick="append('*')">×</button>
+    <button onclick="append('1')">1</button>
+    <button onclick="append('2')">2</button>
+    <button onclick="append('3')">3</button>
+    <button onclick="append('-')">−</button>
+    <button onclick="append('0')">0</button>
+    <button onclick="append('.')">.</button>
+    <button onclick="calculate()">=</button>
+    <button onclick="append('+')">+</button>
+    <button onclick="clearDisplay()" class="danger">C</button>
+    <button onclick="append('(')">(</button>
+    <button onclick="append(')')">)</button>
+    <button onclick="append('%')">%</button>
+  </div>
+</div>
+
+<!-- 怪しい効果音（例：クリック音） -->
+<audio id="clickSound" src="https://freesound.org/data/previews/320/320181_4939433-lq.mp3"></audio>
+
+<script>
+  const display = document.getElementById('display');
+  const clickSound = document.getElementById('clickSound');
+
+  function append(value) {
+    display.value += value;
+    clickSound.play();
+  }
+
+  function calculate() {
+    try {
+      display.value = eval(display.value);
+      clickSound.play();
+    } catch (e) {
+      display.value = "ERROR";
+    }
+  }
+
+  function clearDisplay() {
+    display.value = '';
+    clickSound.play();
+  }
+</script>
+
+<!-- フォント（機械的な雰囲気） -->
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
+</body>
+</html>

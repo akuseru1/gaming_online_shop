@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="ポイント機能.css">
+  <title>ポイント機能</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin-top: 50px;
+    }
+    .points {
+      font-size: 2rem;
+      color: #4CAF50;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 1rem;
+      background-color: #007BFF;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+  <h1>ポイントシステム</h1>
+  <p>現在のポイント: <span class="points" id="points">0</span></p>
+  <button onclick="addPoints1()">ポイントを追加</button>
+  <button onclick="addPoints2()">ポイントを削減</button>
+  <script>
+    let points = 0;
+
+    function addPoints1() {
+      points += 10; // 10ポイント追加
+      document.getElementById('points').textContent = points;
+    }
+    
+    function addPoints2() {
+      points -= 10; // 10ポイント追加
+      document.getElementById('points').textContent = points;
+    }
+  </script>
+</body>
+</html>
